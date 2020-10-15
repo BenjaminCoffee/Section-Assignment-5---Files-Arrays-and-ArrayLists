@@ -18,8 +18,14 @@ public class WordCount extends ConsoleProgram {
 	public void demonstration() {
 		// create a BufferedReader object to read from a user specified file
 		BufferedReader inFile = getBufferedReader();
-		
+
 		println(getFileContents(inFile));
+
+		try {
+			inFile.close();
+		} catch (IOException e) {
+			println("Unable to close the output stream.");
+		}
 	}
 
 	public BufferedReader getBufferedReader() {
@@ -79,7 +85,7 @@ public class WordCount extends ConsoleProgram {
 		if (string == null || string.isEmpty()) {
 			return 0;
 		}
-		
+
 		StringTokenizer stringTokenizer = new StringTokenizer(string);
 
 		return stringTokenizer.countTokens();
